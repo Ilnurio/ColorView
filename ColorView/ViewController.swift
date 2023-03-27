@@ -21,34 +21,38 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         colorView.layer.cornerRadius = 15
+        setColor()
         
-        colorView.backgroundColor = UIColor (
-            red: CGFloat(redSlider.value),
-            green: CGFloat(greenSlider.value),
-            blue: CGFloat(blueSlider.value),
-            alpha: 1
-        )
-        
-        redLabel.text = String(format: "%.2f", redSlider.value)
-        greenLabel.text = String(format: "%.2f", greenSlider.value)
-        blueLabel.text = String(format: "%.2f", blueSlider.value)
+        redLabel.text = string(from: redSlider)
+        greenLabel.text = string(from: greenSlider)
+        blueLabel.text = string(from: blueSlider)
     }
 
-    
     @IBAction func sliderAction(_ sender: UISlider) {
+        setColor()
         
+        switch sender {
+        case redSlider:
+            redLabel.text = String(format: "%.2f", redSlider.value)
+        case greenSlider:
+            greenLabel.text = String(format: "%.2f", greenSlider.value)
+        default:
+            blueLabel.text = String(format: "%.2f", blueSlider.value)
+        }
+    }
+    
+    private func setColor() {
         colorView.backgroundColor = UIColor (
             red: CGFloat(redSlider.value),
             green: CGFloat(greenSlider.value),
             blue: CGFloat(blueSlider.value),
             alpha: 1
         )
-        
-        redLabel.text = String(format: "%.2f", redSlider.value)
-        greenLabel.text = String(format: "%.2f", greenSlider.value)
-        blueLabel.text = String(format: "%.2f", blueSlider.value)
+    }
+    
+    private func string(from slider: UISlider) -> String {
+        String(format: "%.2f", slider.value)
     }
 }
 
