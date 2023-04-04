@@ -4,7 +4,7 @@
 //
 //  Created by Ilnur on 27.03.2023.
 //
-
+// Я вот тут написал вот эту дичь
 import UIKit
 
 class ViewController: UIViewController {
